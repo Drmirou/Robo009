@@ -4,15 +4,38 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int HP = 0;
+    public void TakeDamage(int aHPValue)
     {
-        
+        HP += aHPValue;
+
+        if (HP < 0)
+        {
+            GameObject.Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    
+    public Rigidbody2D myRigidBody = null;
+
+    public float MovementSpeedPerSecond = 10.0f;
+    public float MovementSign = 1.0f;
+
+
+
+    void FixedUpdate()
     {
+     
+        Vector3 characterVelocity = myRigidBody.velocity;
         
+        characterVelocity.x = 0;
+
+       
+        characterVelocity += MovementSign * MovementSpeedPerSecond * transform.right.normalized;
+
+      
+        myRigidBody.velocity = characterVelocity;
+
+
     }
 }
