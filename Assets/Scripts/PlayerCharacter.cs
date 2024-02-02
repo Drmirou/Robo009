@@ -14,10 +14,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer; 
 
    
+    [SerializeField] float CannonCooldown;
+    [SerializeField] float CannonCooldownOnStart;
+   
+    void Start()
+    {
+        CannonCooldownOnStart = CannonCooldown;
 
-    
+    }
+
     void Update()
     {
+        CannonCooldown -= Time.deltaTime;
         horizontal = Input.GetAxisRaw("Horizontal");
     }
 
@@ -35,6 +43,6 @@ public class PlayerMovement : MonoBehaviour
 
     void OnFire()
     {
-
+        CannonCooldown = CannonCooldownOnStart;
     }
 }
