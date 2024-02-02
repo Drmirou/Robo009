@@ -1486,6 +1486,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CannonCooldown: 10
+  CannonCooldownOnStart: 0
+  SimpleBullet: {fileID: 7733989710218677299, guid: e98025087f863094e9ebb7699b98989d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

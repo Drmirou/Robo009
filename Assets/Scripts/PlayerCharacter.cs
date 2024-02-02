@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float CannonCooldown;
     [SerializeField] float CannonCooldownOnStart;
+    public GameObject SimpleBullet;
    
     void Start()
     {
@@ -21,5 +22,8 @@ public class PlayerMovement : MonoBehaviour
     void OnFire()
     {
         CannonCooldown = CannonCooldownOnStart;
+
+        GameObject Bellet = Instantiate(SimpleBullet, transform.position, transform.rotation);
+        Destroy(Bellet, 4f);
     }
 }
