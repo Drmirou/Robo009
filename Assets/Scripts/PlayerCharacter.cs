@@ -68,7 +68,11 @@ public class PlayerCharacter : MonoBehaviour
             Rigidbody2D BelletRB = Bellet.GetComponent<Rigidbody2D>();
             if(isFacingRight == true )
             {
-
+                BelletRB.velocity += new Vector2(2f, 0);
+            }
+            else
+            {
+                BelletRB.velocity += new Vector2(-2f, 0);
             }
             Destroy(Bellet, 4f);
         }

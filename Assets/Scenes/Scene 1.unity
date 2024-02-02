@@ -1517,14 +1517,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11247c2160dc954ea666c2d6e632e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFacingRight: 1
   rb: {fileID: 1986190726}
   groundcheck: {fileID: 1879331171}
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
-  CannonCooldown: 0
+  CannonCooldown: 10
   CannonCooldownOnStart: 0
-  SimpleBullet: {fileID: 0}
+  SimpleBullet: {fileID: 7733989710218677299, guid: e98025087f863094e9ebb7699b98989d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
