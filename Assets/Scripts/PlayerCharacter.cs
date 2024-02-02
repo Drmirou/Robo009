@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
    
     void Start()
@@ -10,9 +10,13 @@ public class Bullet : MonoBehaviour
         
     }
 
-   
     void Update()
     {
         
+    }
+
+    void OnFire()
+    {
+
     }
 }
