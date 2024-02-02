@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerCharacter : MonoBehaviour
 {
     private float horizontal;
     private float speed = 5f;
@@ -28,6 +28,17 @@ public class PlayerMovement : MonoBehaviour
     {
         CannonCooldown -= Time.deltaTime;
         horizontal = Input.GetAxisRaw("Horizontal");
+
+        if (Input.GetButtonDown("Jump") && IsGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+        }
+
+        if (Input.GetButtonUp("Jump") && rb.velocity.x > 0)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0,5f );
+        }
+
     }
 
 
