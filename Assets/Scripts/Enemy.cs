@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-     
+        
         Vector3 characterVelocity = myRigidBody.velocity;
         
         characterVelocity.x = 0;
