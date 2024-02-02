@@ -16,14 +16,21 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        CannonCooldown -= Time.deltaTime;
+        if (CannonCooldown > 0)
+        {
+            CannonCooldown -= Time.deltaTime;
+        }
     }
 
     void OnFire()
     {
-        CannonCooldown = CannonCooldownOnStart;
+        if (CannonCooldown < 0)
+        {
+            CannonCooldown = CannonCooldownOnStart;
 
-        GameObject Bellet = Instantiate(SimpleBullet, transform.position, transform.rotation);
-        Destroy(Bellet, 4f);
+            GameObject Bellet = Instantiate(SimpleBullet, transform.position + new Vector3(0.5f, 0.0f, 0.0f), transform.rotation);
+            Destroy(Bellet, 4f);
+        }
+        
     }
 }
