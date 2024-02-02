@@ -39,3 +39,4 @@ public class Enemy : MonoBehaviour
 
     }
 }
+// ni får byta kod om det inte funkar
