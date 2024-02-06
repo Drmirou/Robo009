@@ -5,8 +5,6 @@ using UnityEngine;
 public class PointAtMouseTest : MonoBehaviour
 {
     public Camera cam;
-    public Rigidbody2D myRigidbody;
-    
     
     Vector2 mousePos;
 
@@ -17,8 +15,6 @@ public class PointAtMouseTest : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 aimDirection = mousePos - myRigidbody.position;
-        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-        myRigidbody.rotation = angle;
+        
     }
 }
