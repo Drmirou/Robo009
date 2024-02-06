@@ -7,7 +7,7 @@ public class PlayerCharacter : MonoBehaviour
 {
     private float horizontal;
     private float speed = 5f;
-    private float jumpingPower = 10f;
+    private float jumpingPower = 4f;
     public bool isFacingRight = true;
 
     [SerializeField] private Rigidbody2D rb;
@@ -31,21 +31,26 @@ public class PlayerCharacter : MonoBehaviour
         {
             CannonCooldown -= Time.deltaTime;
         }
+        horizontal = Input.GetAxisRaw("Horizontal");
+        if(IsGrounded())
+        {
+            if (Input.GetButtonDown("Jump"))
+            {
+                Debug.Log("s");
+                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+
+
+            }
+        }
         else
         {
-            CannonCooldown = 0;
-        }
-        horizontal = Input.GetAxisRaw("Horizontal");
-
-        if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            if (Input.GetButtonUp("Jump") && rb.velocity.x > 0)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0, 5f);
+            }
         }
 
-        if (Input.GetButtonUp("Jump") && rb.velocity.x > 0)
-        {
-            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0, 5f);
-        }
+    
 
     }
 
@@ -64,7 +69,7 @@ public class PlayerCharacter : MonoBehaviour
 
     void OnFire()
     {
-        if (CannonCooldown <= 0)
+        if (CannonCooldown < 0)
         {
             CannonCooldown = CannonCooldownOnStart;
 
