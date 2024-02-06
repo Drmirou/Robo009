@@ -16,7 +16,7 @@ public class SimpleBullet : MonoBehaviour
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 direction = mousePos - transform.position;
         Vector3 rotation = transform.position - mousePos;
-        myRigidbody,
+        myRigidbody.velocity = new Vector2 (direction.x, direction.y).normalized * force;
     }
 
     public void OnCollisionEnter2D(Collision2D other)
