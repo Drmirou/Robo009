@@ -15,3 +15,4 @@ public class NewBehaviourScript : MonoBehaviour
         }
     }
 }
+// Man i love funny!!!
