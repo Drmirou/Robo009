@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class SimpleBullet : MonoBehaviour
 {
-   
-    void Start()
+    public void OnCollisionEnter2D(Collision2D other)
     {
-        
-    }
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            // DO stuff if hits enemy
 
-   
-    void Update()
-    {
-        
+        }
+
+        // Destroy yourself if you hit anything
+        Destroy(gameObject);
     }
 }

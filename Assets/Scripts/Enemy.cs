@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
             GameObject.Destroy(gameObject);
         }
     }
-    // I love anime girls yippe!!!!
+    // I love copium yippe!!!!
     
     public Rigidbody2D myRigidBody = null;
 
