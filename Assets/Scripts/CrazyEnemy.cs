@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int HP = 0;
+    public void TakeDamage(int aHPValue)
     {
-        
-    }
+        HP += aHPValue;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (HP < 0)
+        {
+            GameObject.Destroy(gameObject);
+        }
     }
 }
