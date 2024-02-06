@@ -17,6 +17,7 @@ public class CannonScript : MonoBehaviour
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         CannonCooldownOnStart = CannonCooldown;
+        CannonCooldown = 0;
     }
     private void Update()
     {
