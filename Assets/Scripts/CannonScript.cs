@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,15 +35,16 @@ public class CannonScript : MonoBehaviour
         {
             CannonCooldown = 0;
         }
+        
     }
 
     public void CannonFire()
-    {
+    {   
         if (CannonCooldown <= 0)
         {
             CannonCooldown = CannonCooldownOnStart;
 
-            GameObject Bellet = Instantiate(SimpleBullet, transform.position + new Vector3(0.5f, 0.0f, 0.0f), transform.rotation);
+            GameObject Bellet = Instantiate(SimpleBullet, transform.position + new Vector3(1f, 0.0f, 0.0f), transform.rotation);
             Rigidbody2D BelletRB = Bellet.GetComponent<Rigidbody2D>();
             
             

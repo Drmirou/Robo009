@@ -14,23 +14,16 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask groundLayer;
 
+    CannonScript cannonscript;
 
-    [SerializeField] float CannonCooldown;
-    [SerializeField] float CannonCooldownOnStart;
-    public GameObject SimpleBullet;
-
-    void Start()
+    private void Start()
     {
-        CannonCooldownOnStart = CannonCooldown;
-
+        cannonscript = FindObjectOfType<CannonScript>();
     }
 
     void Update()
     {
-        if (CannonCooldown > 0)
-        {
-            CannonCooldown -= Time.deltaTime;
-        }
+       
         horizontal = Input.GetAxisRaw("Horizontal");
         if(IsGrounded())
         {
@@ -69,22 +62,9 @@ public class PlayerCharacter : MonoBehaviour
 
     void OnFire()
     {
-        if (CannonCooldown < 0)
-        {
-            CannonCooldown = CannonCooldownOnStart;
 
-            GameObject Bellet = Instantiate(SimpleBullet, transform.position + new Vector3(0.5f, 0.0f, 0.0f), transform.rotation);
-            Rigidbody2D BelletRB = Bellet.GetComponent<Rigidbody2D>();
-            if (isFacingRight == true)
-            {
-                BelletRB.velocity += new Vector2(2f, 0);
-            }
-            else
-            {
-                BelletRB.velocity += new Vector2(-2f, 0);
-            }
-            Destroy(Bellet, 4f);
-        }
+        cannonscript.CannonFire();
+        
 
     }
 }
