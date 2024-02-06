@@ -13,9 +13,6 @@ public class CannonScript : MonoBehaviour
     Vector3 mousePos;
 
 
-
-
-
     private void Start()
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
