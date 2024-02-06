@@ -12,13 +12,13 @@ public class PlayerCharacter : MonoBehaviour
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
-    [SerializeField] private LayerMask groundLayer; 
+    [SerializeField] private LayerMask groundLayer;
 
-   
+
     [SerializeField] float CannonCooldown;
     [SerializeField] float CannonCooldownOnStart;
     public GameObject SimpleBullet;
-   
+
     void Start()
     {
         CannonCooldownOnStart = CannonCooldown;
@@ -40,7 +40,7 @@ public class PlayerCharacter : MonoBehaviour
 
         if (Input.GetButtonUp("Jump") && rb.velocity.x > 0)
         {
-            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0,5f );
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0, 5f);
         }
 
     }
@@ -54,8 +54,8 @@ public class PlayerCharacter : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundLayer); 
-        
+        return Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundLayer);
+
     }
 
     void OnFire()
@@ -66,7 +66,7 @@ public class PlayerCharacter : MonoBehaviour
 
             GameObject Bellet = Instantiate(SimpleBullet, transform.position + new Vector3(0.5f, 0.0f, 0.0f), transform.rotation);
             Rigidbody2D BelletRB = Bellet.GetComponent<Rigidbody2D>();
-            if(isFacingRight == true )
+            if (isFacingRight == true)
             {
                 BelletRB.velocity += new Vector2(2f, 0);
             }
@@ -76,6 +76,6 @@ public class PlayerCharacter : MonoBehaviour
             }
             Destroy(Bellet, 4f);
         }
-        
+
     }
 }
