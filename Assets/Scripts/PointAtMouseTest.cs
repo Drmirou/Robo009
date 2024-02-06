@@ -12,7 +12,13 @@ public class PointAtMouseTest : MonoBehaviour
 
     private void Update()
     {
-       mousePos = 
+       mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
     }
 
+    void FixedUpdate()
+    {
+        Vector2 aimDirection = mousePos - myRigidbody.position;
+        float angleDirection = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
+
+    }
 }
