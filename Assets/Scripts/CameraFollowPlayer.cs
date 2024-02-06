@@ -7,6 +7,7 @@ public class CameraFollowPlayer : MonoBehaviour
     [SerializeField] Transform targetToFollow;
     [SerializeField] float smoothing = 0.6f;
     [SerializeField] float yOffset = 3f;
+    public bool FollowingPlayer = true;
 
     Vector3 velocity = Vector3.zero;
 
@@ -21,16 +22,19 @@ public class CameraFollowPlayer : MonoBehaviour
 
     void LateUpdate()
     {
-        Vector3 targetPosition = new Vector3(
-         targetToFollow.position.x,
-         targetToFollow.position.y + yOffset,
-         transform.position.z);
+        if (FollowingPlayer == true)
+        {
 
-        transform.position = Vector3.SmoothDamp(
+            Vector3 targetPosition = new Vector3(
+             targetToFollow.position.x,
+             targetToFollow.position.y + yOffset,
+             transform.position.z);
+
+            transform.position = Vector3.SmoothDamp(
             transform.position,
             targetPosition,
             ref velocity,
             smoothing);
-
+        }
     }
 }

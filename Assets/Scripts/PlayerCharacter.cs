@@ -31,6 +31,10 @@ public class PlayerCharacter : MonoBehaviour
         {
             CannonCooldown -= Time.deltaTime;
         }
+        else
+        {
+            CannonCooldown = 0;
+        }
         horizontal = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -60,7 +64,7 @@ public class PlayerCharacter : MonoBehaviour
 
     void OnFire()
     {
-        if (CannonCooldown < 0)
+        if (CannonCooldown <= 0)
         {
             CannonCooldown = CannonCooldownOnStart;
 
