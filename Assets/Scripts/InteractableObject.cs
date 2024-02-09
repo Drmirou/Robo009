@@ -21,5 +21,5 @@ public class InteractableObject : CollidableObject
           z_Interacted = true;
           Debug.Log("INTERACT WITH " + name);
         }
-        }
+    }
 }
