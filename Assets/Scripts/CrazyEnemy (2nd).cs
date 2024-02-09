@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Enemy2 : MonoBehaviour
 {
-    public int HP = 0;
+    public int HP = 1;
     public void TakeDamage(int aHPValue)
     {
         HP += aHPValue;

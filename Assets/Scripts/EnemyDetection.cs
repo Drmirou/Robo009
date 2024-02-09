@@ -12,7 +12,7 @@ public class EnemyDetection : MonoBehaviour
     private Transform player; // Reference to the player's transform
     private bool playerDetected = false; // Flag to track if the player is detected
 
-    void Start()
+    void Start() // MEewwowd owowowoow asd kpwas, pad  //huh? //mgmdfpmapewapemsda //huh? // wkdpaksdpokwapd //huh?
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; // Find the player object
     }

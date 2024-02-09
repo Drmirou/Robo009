@@ -9,6 +9,7 @@ public class PlayerCharacter : MonoBehaviour
     private float speed = 5f;
     private float jumpingPower = 10f;
     public bool isFacingRight = true;
+    public float HP = 1.0f;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
