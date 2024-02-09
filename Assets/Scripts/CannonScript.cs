@@ -10,6 +10,8 @@ public class CannonScript : MonoBehaviour
     [SerializeField] float CannonCooldown;
     [SerializeField] float CannonCooldownOnStart;
     public Transform bulletSpawner;
+
+    
     
     
     Vector3 mousePos;
@@ -45,11 +47,13 @@ public class CannonScript : MonoBehaviour
         {
             CannonCooldown = CannonCooldownOnStart;
 
-            Instantiate(SimpleBullet, bulletSpawner.position, Quaternion.identity);
+            GameObject bullet = Instantiate(SimpleBullet, bulletSpawner.position, bulletSpawner.rotation);
             Rigidbody2D BelletRB = SimpleBullet.GetComponent<Rigidbody2D>();
             
             
-            Destroy(SimpleBullet, 10f);
+            Destroy(bullet, 10f);
         }
     }
+
+
 }
