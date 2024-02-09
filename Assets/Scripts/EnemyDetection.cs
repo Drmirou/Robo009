@@ -4,36 +4,60 @@ using UnityEngine;
 
 public class EnemyDetection : MonoBehaviour
 {
-    public LayerMask enemyLayer; // Layer mask for detecting enemies
-    public float detectionRadius = 5f;
-    public Transform detectionPoint; // Point from where detection is done, usually the front of the character
+    public LayerMask playerLayer; // Layer mask for detecting the player
+    public float detectionRadius = 5f; // Radius for detecting the player
+    public Transform detectionPoint; // Point from where detection is done, usually the front of the enemy
+    public float chaseSpeed = 3f; // Speed at which the enemy chases the player
 
-    private void Update()
+    private Transform player; // Reference to the player's transform
+    private bool playerDetected = false; // Flag to track if the player is detected
+
+    void Start()
     {
-        // Check for enemy detection
-        DetectEnemies();
+        player = GameObject.FindGameObjectWithTag("Player").transform; // Find the player object
     }
-    void DetectEnemies()
+
+    void Update()
     {
-        // Detect enemies within the detection radius
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(detectionPoint.position, detectionRadius, enemyLayer);
+        // Check for player detection
+        DetectPlayer();
 
-        // If enemies are detected
-        if (colliders.Length > 0)
+        // If player is detected, chase the player
+        if (playerDetected)
         {
-            foreach (Collider2D col in colliders)
-            {
-                // You can do something with the detected enemies like attacking or triggering an alarm
-                Debug.Log("Enemy detected: " + col.gameObject.name);
+            ChasePlayer();
+        }
+    }
 
-                // Example:get more information about the enemy
-                Enemy enemyScript = col.gameObject.GetComponent<Enemy>();
-               if (enemyScript != null)
-                {
-                   
-                }
+    void DetectPlayer()
+    {
+        // Calculate the distance between the enemy and the player
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+        // If the player is within the detection radius, set playerDetected flag to true
+        if (distanceToPlayer <= detectionRadius)
+        {
+            // Check if there are any obstacles between the enemy and the player
+            RaycastHit2D hit = Physics2D.Raycast(detectionPoint.position, player.position - detectionPoint.position, distanceToPlayer, playerLayer);
+            if (hit.collider != null && hit.collider.CompareTag("Player"))
+            {
+                playerDetected = true;
+            }
+            else
+            {
+                playerDetected = false;
             }
         }
+        else
+        {
+            playerDetected = false;
+        }
+    }
+
+    void ChasePlayer()
+    {
+        // Move towards the player
+        transform.position = Vector2.MoveTowards(transform.position, player.position, chaseSpeed * Time.deltaTime);
     }
 
     // Visualize the detection radius in the editor
@@ -42,10 +66,11 @@ public class EnemyDetection : MonoBehaviour
         if (detectionPoint == null)
             return;
 
+
         // Draw a wire circle in the scene view to visualize the detection radius
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(detectionPoint.position, detectionRadius);
     }
 }
 
-//får åndra "meow"
+//får åndra "meow" 
