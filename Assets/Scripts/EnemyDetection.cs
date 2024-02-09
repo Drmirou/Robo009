@@ -23,10 +23,10 @@ public class EnemyDetection : MonoBehaviour
         {
             foreach (Collider2D col in colliders)
             {
-                // Example: You can do something with the detected enemies like attacking or triggering an alarm
+                // You can do something with the detected enemies like attacking or triggering an alarm
                 Debug.Log("Enemy detected: " + col.gameObject.name);
 
-                // Example: You can also get more information about the enemy
+                // Example:get more information about the enemy
                 Enemy enemyScript = col.gameObject.GetComponent<Enemy>();
                if (enemyScript != null)
                 {
@@ -48,3 +48,4 @@ public class EnemyDetection : MonoBehaviour
     }
 }
 
+//får åndra "meow"
