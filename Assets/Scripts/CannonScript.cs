@@ -9,6 +9,7 @@ public class CannonScript : MonoBehaviour
     public GameObject SimpleBullet;
     [SerializeField] float CannonCooldown;
     [SerializeField] float CannonCooldownOnStart;
+    public Transform bulletSpanwer;
     
     
     Vector3 mousePos;
