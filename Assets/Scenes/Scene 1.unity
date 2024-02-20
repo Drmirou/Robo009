@@ -1504,6 +1504,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11247c2160dc954ea666c2d6e632e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 8
+  jumpingPower: 8.5
   isFacingRight: 1
   rb: {fileID: 1986190726}
   groundcheck: {fileID: 1879331171}

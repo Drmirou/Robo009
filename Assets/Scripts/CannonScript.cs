@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CannonScript : MonoBehaviour
@@ -15,6 +16,7 @@ public class CannonScript : MonoBehaviour
     
     
     Vector3 mousePos;
+    Vector3 playerPos;
 
 
     private void Start()
@@ -42,16 +44,21 @@ public class CannonScript : MonoBehaviour
     }
 
     public void CannonFire()
-    {   
-        if (CannonCooldown <= 0)
+    {
+       float dist = Vector2.Distance(mousePos, playerPos);
+        Debug.Log(dist);
+        if (dist > 1.6f)
         {
-            CannonCooldown = CannonCooldownOnStart;
+            if (CannonCooldown <= 0)
+            {
+                CannonCooldown = CannonCooldownOnStart;
 
-            GameObject bullet = Instantiate(SimpleBullet, bulletSpawner.position, bulletSpawner.rotation);
-            Rigidbody2D BelletRB = SimpleBullet.GetComponent<Rigidbody2D>();
-            
-            
-            Destroy(bullet, 10f);
+                GameObject bullet = Instantiate(SimpleBullet, bulletSpawner.position, bulletSpawner.rotation);
+                Rigidbody2D BelletRB = SimpleBullet.GetComponent<Rigidbody2D>();
+
+
+                Destroy(bullet, 10f);
+            }
         }
     }
 
