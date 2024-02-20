@@ -17,10 +17,10 @@ public class EnemyDetection : MonoBehaviour
 
     void Update()
     {
-        // Check for player detection
+       
         DetectPlayer();
 
-        // If player is detected, chase the player
+     
         if (playerDetected)
         {
             ChasePlayer();
