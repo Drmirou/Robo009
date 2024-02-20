@@ -29,10 +29,7 @@ public class PlayerCharacter : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump"))
             {
-                Debug.Log("s");
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-
-
             }
         }
         else
