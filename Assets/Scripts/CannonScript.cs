@@ -10,13 +10,14 @@ public class CannonScript : MonoBehaviour
     public GameObject SimpleBullet;
     [SerializeField] float CannonCooldown;
     [SerializeField] float CannonCooldownOnStart;
+    [SerializeField] float PlayerCannonDistance = 0.9f;
     public Transform bulletSpawner;
 
     
     
     
     Vector3 mousePos;
-    Vector3 playerPos;
+    Transform playerPos;
 
 
     private void Start()
@@ -24,6 +25,7 @@ public class CannonScript : MonoBehaviour
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         CannonCooldownOnStart = CannonCooldown;
         CannonCooldown = 0;
+        playerPos = GameObject.Find("Player").GetComponent<Transform>();
     }
     private void Update()
     {
@@ -45,9 +47,9 @@ public class CannonScript : MonoBehaviour
 
     public void CannonFire()
     {
-       float dist = Vector2.Distance(mousePos, playerPos);
+       float dist = Vector2.Distance(mousePos, playerPos.position);
         Debug.Log(dist);
-        if (dist > 1.7f)
+        if (dist > PlayerCannonDistance)
         {
             if (CannonCooldown <= 0)
             {
