@@ -6,9 +6,9 @@ using UnityEngine;
 public class PlayerCharacter : MonoBehaviour
 {
     private float horizontal;
-    private float speed = 5f;
-    private float jumpingPower = 4f;
-    public bool isFacingRight = true;
+    [SerializeField] float speed = 5f;
+    [SerializeField] float jumpingPower = 4f;
+    [SerializeField] bool isFacingRight = true;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
