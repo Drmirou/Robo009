@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyDetection : MonoBehaviour
 {
     public LayerMask playerLayer; // Layer mask for detecting the player
     public float detectionRadius = 5f; // Radius for detecting the player
-    public Transform detectionPoint; // Point from where detection is done, usually the front of the enemy
+    public Transform detectionPoint; // Point from where detection is done
     public float chaseSpeed = 3f; // Speed at which the enemy chases the player
 
     private Transform player; // Reference to the player's transform
