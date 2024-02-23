@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class PlayerCharacter : MonoBehaviour
@@ -14,6 +15,9 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask groundLayer;
 
+    private float coyoteTime;
+    private float coyoteTimeCounter;
+
     CannonScript cannonscript;
 
     private void Start()
@@ -23,28 +27,32 @@ public class PlayerCharacter : MonoBehaviour
 
     void Update()
     {
-       
-        horizontal = Input.GetAxisRaw("Horizontal");
-        if(IsGrounded())
+       if(IsGrounded())
         {
-            if (Input.GetButtonDown("Jump"))
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-            }
+            coyoteTimeCounter = coyoteTime;
         }
         else
         {
-            if (Input.GetButtonUp("Jump") && rb.velocity.x > 0)
-            {
-                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0, 5f);
-            }
+            coyoteTimeCounter -= Time.deltaTime;
         }
 
-    
+        horizontal = Input.GetAxisRaw("Horizontal");
+        if(coyoteTimeCounter > 0 && Input.GetButtonDown("Jump"))
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+        }
+        if (Input.GetButtonUp("Jump") && rb.velocity.x > 0)
+        {
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0, 5f);
+        }
 
+        Flip();
     }
 
+    private void Flip()
+    {
 
+    }
 
     private void FixedUpdate()
     {
