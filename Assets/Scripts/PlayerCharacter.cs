@@ -15,7 +15,7 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask groundLayer;
 
-    private float coyoteTime;
+    private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
 
     CannonScript cannonscript;
@@ -27,7 +27,9 @@ public class PlayerCharacter : MonoBehaviour
 
     void Update()
     {
-       if(IsGrounded())
+        horizontal = Input.GetAxisRaw("Horizontal");
+
+        if (IsGrounded())
         {
             coyoteTimeCounter = coyoteTime;
         }
@@ -35,15 +37,17 @@ public class PlayerCharacter : MonoBehaviour
         {
             coyoteTimeCounter -= Time.deltaTime;
         }
-
-        horizontal = Input.GetAxisRaw("Horizontal");
+       
         if(coyoteTimeCounter > 0 && Input.GetButtonDown("Jump"))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
+     
         if (Input.GetButtonUp("Jump") && rb.velocity.x > 0)
         {
-                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0, 5f);
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0, 5f);
+
+            coyoteTimeCounter = 0f;
         }
 
         Flip();
