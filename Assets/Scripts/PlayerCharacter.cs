@@ -48,6 +48,7 @@ public class PlayerCharacter : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0, 5f);
 
             coyoteTimeCounter = 0f;
+
         }
 
         Flip();
@@ -55,7 +56,9 @@ public class PlayerCharacter : MonoBehaviour
 
     private void Flip()
     {
-
+      
+       // Fix, if mouse position = a certain value the character turns to left or right
+   
     }
 
     private void FixedUpdate()
