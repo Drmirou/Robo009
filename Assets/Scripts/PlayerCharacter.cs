@@ -53,7 +53,7 @@ public class PlayerCharacter : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundLayer);
+        return Physics2D.OverlapCircle(groundcheck.position, 0.3f, groundLayer);
 
     }
 
@@ -64,4 +64,5 @@ public class PlayerCharacter : MonoBehaviour
         
 
     }
+
 }
