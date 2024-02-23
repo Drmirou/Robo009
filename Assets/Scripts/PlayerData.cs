@@ -6,5 +6,5 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     public float HP = 1.0f;
-    
+    public float Points = 1.0f;
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerCharacter : MonoBehaviour
 {
+    public PlayerData CurrentPlayerData = null;
     private float horizontal;
     private float speed = 5f;
     private float jumpingPower = 10f;
