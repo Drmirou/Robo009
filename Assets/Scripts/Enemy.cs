@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D myRigidBody = null;
 
     public float MovementSpeedPerSecond = 10.0f;
-    public float MovementSign = 1.0f;
+    public float MovementSign = 2.0f;
 
 
 

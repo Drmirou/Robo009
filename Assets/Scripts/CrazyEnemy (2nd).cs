@@ -48,3 +48,4 @@ public class Enemy2 : MonoBehaviour
         
 }
 
+// FREEDOM RAHHHH :BIRD: :BRID:
