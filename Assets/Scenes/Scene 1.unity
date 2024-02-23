@@ -2056,7 +2056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
-  jumpingPower: 8.5
+  jumpingPower: 9
   isFacingRight: 1
   rb: {fileID: 1986190726}
   groundcheck: {fileID: 1879331171}
