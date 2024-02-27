@@ -55,3 +55,5 @@ public class Enemy2 : MonoBehaviour
 }
 
 // FREEDOM RAHHHH :BIRD: :BRID:
+
+// might done litte trolling
