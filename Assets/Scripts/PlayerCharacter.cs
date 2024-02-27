@@ -23,10 +23,12 @@ public class PlayerCharacter : MonoBehaviour
     private float coyoteTimeCounter;
 
     CannonScript cannonscript;
+    Light flashLight;
 
     private void Start()
     {
         cannonscript = FindObjectOfType<CannonScript>();
+        flashLight = FindObjectOfType<Light>();
     }
 
     void Update()
