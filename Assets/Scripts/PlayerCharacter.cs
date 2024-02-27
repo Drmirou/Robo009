@@ -58,7 +58,15 @@ public class PlayerCharacter : MonoBehaviour
     {
         Vector3 mouseCameraPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseCameraPos.z = 0f;
-        Debug.Log(mouseCameraPos);
+
+        if(transform.position.x > mouseCameraPos.x) {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }   else
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+
+
 
     }
 
