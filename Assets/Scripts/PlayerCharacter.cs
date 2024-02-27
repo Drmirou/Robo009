@@ -12,7 +12,6 @@ public class PlayerCharacter : MonoBehaviour
     private float horizontal;
     [SerializeField] float speed = 5f;
     [SerializeField] float jumpingPower = 4f;
-    [SerializeField] bool isFacingRight = true;
     [SerializeField] float HP = 1.0f;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
@@ -64,10 +63,12 @@ public class PlayerCharacter : MonoBehaviour
         mouseCameraPos.z = 0f;
 
         if(transform.position.x > mouseCameraPos.x) {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+           if(transform.rotation !=  Quaternion.Euler(0, -180, 0)) { transform.rotation = Quaternion.Euler(0, 180, 0); }
+           
         }   else
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+           if (transform.rotation != Quaternion.Euler(0, 0, 0)) { transform.rotation = Quaternion.Euler(0, 0, 0); }
+
         }
 
 
