@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableObject : CollidableObject
+public class InteractableObject : MonoBehaviour
 {
     private bool z_Interacted = false;
     private bool isPlayerTouching = false;

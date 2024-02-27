@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.Rendering;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class PlayerCharacter : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Vector3 mousePosition;
 
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
@@ -48,15 +51,15 @@ public class PlayerCharacter : MonoBehaviour
             coyoteTimeCounter = 0f;
 
         }
-
         Flip();
     }
 
     private void Flip()
     {
-      
-       // Fix, if mouse position = a certain value the character turns to left or right
-   
+        Vector3 mouseCameraPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseCameraPos.z = 0f;
+        Debug.Log(mouseCameraPos);
+
     }
 
     private void FixedUpdate()
