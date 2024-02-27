@@ -78,6 +78,11 @@ public class PlayerCharacter : MonoBehaviour
 
     }
 
+    void OnFlashlight()
+    {
+        flashLight.enabled = !flashLight.enabled;
+    }
+
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);

@@ -1648,7 +1648,7 @@ GameObject:
   - component: {fileID: 1586119165}
   - component: {fileID: 1586119166}
   m_Layer: 0
-  m_Name: FlashLight Light
+  m_Name: 'FlashLight '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2031,7 +2031,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2.5
+  m_GravityScale: 2.9
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
