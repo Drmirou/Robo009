@@ -45,13 +45,14 @@ public class PlayerCharacter : MonoBehaviour
         if(coyoteTimeCounter > 0 && Input.GetButtonDown("Jump"))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            coyoteTimeCounter = 0f;
         }
      
         if (Input.GetButtonUp("Jump"))
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0, 5f);
 
-            coyoteTimeCounter = 0f;
+            
 
         }
         Flip();
