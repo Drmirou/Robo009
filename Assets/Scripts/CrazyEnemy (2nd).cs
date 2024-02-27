@@ -1,26 +1,24 @@
+using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Enemy2 : MonoBehaviour
 {
-    public float flyingSpeed = 5f;
-    public int health = 100;
-    public int attackPower = 20;
-    public int Playerhealth = 1;
+
+    public float flyingSpeed = 5f; // Speed of the flying enemy
+    public int health = 100; // Health points of the flying enemy
+    public int attackPower = 20; // Attack power of the flying enemy
+    public float PlayerHealth;
+
 
     // Update is called once per frame
     void Update()
     {
-        // Implement flying movement
-        Fly();
+        // Move the enemy horizontally
+        transform.Translate(Vector2.left * flyingSpeed * Time.deltaTime);
     }
 
-    void Fly()
-    {
-        // Move the enemy horizontally (you can adjust this based on your game)
-        transform.Translate(Vector3.right * flyingSpeed * Time.deltaTime);
-    }
-
+    // Method to handle when the enemy takes damage
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -30,26 +28,33 @@ public class Enemy2 : MonoBehaviour
         }
     }
 
+    // Method to handle the death of the enemy
     void Die()
     {
-        // Add death effects, play sound, etc.
+        
         Destroy(gameObject);
     }
 
+    // Method to handle collision with other objects
     void OnTriggerEnter2D(Collider2D other)
     {
+        // If the collided object is tagged as "Player"
         if (other.CompareTag("Player"))
         {
             Attack(other.gameObject);
         }
     }
 
+    // Method to handle the attack of the enemy
     void Attack(GameObject player)
     {
+        
     //    PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
- //       if (playerHealth != null)
+      
+   //     if (playerHealth != null)
         {
-   //        playerHealth.TakeDamage(attackPower);
+          
+     //       playerHealth.TakeDamage(attackPower);
         }
     }
 }
