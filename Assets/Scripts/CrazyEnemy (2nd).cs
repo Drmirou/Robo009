@@ -44,8 +44,9 @@ public class Enemy2 : MonoBehaviour
             Attack(other.gameObject);
         }
     }
+    
 
-    // Method to handle the attack of the enemy
+    
     void Attack(GameObject player)
     {
         
