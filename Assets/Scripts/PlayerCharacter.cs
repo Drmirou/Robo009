@@ -14,11 +14,11 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] float jumpingPower = 4f;
     [SerializeField] bool isFacingRight = true;
     [SerializeField] float HP = 1.0f;
-
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Vector3 mousePosition;
+
 
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
