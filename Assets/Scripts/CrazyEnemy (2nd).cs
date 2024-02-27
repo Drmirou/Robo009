@@ -2,50 +2,56 @@ using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Enemy2 : MonoBehaviour
-
 {
+    public float flyingSpeed = 5f;
+    public int health = 100;
+    public int attackPower = 20;
+    public int Playerhealth = 1;
 
-    public float minSpeed = 5f;
-    public float maxSpeed = 10f;
-    public float changeInterval = 2f; // Interval to change direction
-    
-
-    private Vector2 direction;
-    private float speed;
-
-    private float timer;
-    public float HP;
-    void Start()
-    {
-        // Set initial speed and direction
-        speed = Random.Range(minSpeed, maxSpeed);
-        direction = Random.insideUnitCircle.normalized;
-    }
-
+    // Update is called once per frame
     void Update()
     {
-        // Move the enemy
-        transform.Translate(direction * speed * Time.deltaTime);
-
-        // Update the timer
-        timer -= Time.deltaTime;
-        if (timer <= 0)
-        {
-            // Change direction
-            direction = Random.insideUnitCircle.normalized;
-            timer = changeInterval;
-        }
+        // Implement flying movement
+        Fly();
     }
-    public void Takedamage(int aHPValue)
+
+    void Fly()
     {
-        HP += aHPValue;
+        // Move the enemy horizontally (you can adjust this based on your game)
+        transform.Translate(Vector3.right * flyingSpeed * Time.deltaTime);
+    }
 
-        if (HP < 0)
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
         {
-            GameObject.Destroy(gameObject);
+            Die();
         }
     }
-        
+
+    void Die()
+    {
+        // Add death effects, play sound, etc.
+        Destroy(gameObject);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Attack(other.gameObject);
+        }
+    }
+
+    void Attack(GameObject player)
+    {
+    //    PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+ //       if (playerHealth != null)
+        {
+   //        playerHealth.TakeDamage(attackPower);
+        }
+    }
 }
 
 // FREEDOM RAHHHH :BIRD: :BRID:
