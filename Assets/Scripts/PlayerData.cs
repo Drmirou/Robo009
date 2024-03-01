@@ -8,4 +8,4 @@ public class PlayerData : ScriptableObject
     public float HP = 1.0f;
     public float Points = 1.0f;
 }
-// jag kommer använda textmeshpro men om ni gör custom testmesh so jag åndra på det
+// jag kommer använda textmeshpro men om ni gör custom testmesh so kan jag åndra på det
