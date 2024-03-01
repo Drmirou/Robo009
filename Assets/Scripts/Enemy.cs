@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
 
        
         characterVelocity += MovementSign * MovementSpeedPerSecond * transform.right.normalized;
+        
 
       
         myRigidBody.velocity = characterVelocity;
