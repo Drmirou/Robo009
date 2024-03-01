@@ -8,7 +8,7 @@ public class Enemy2 : MonoBehaviour
     public float flyingSpeed = 5f; // Speed of the flying enemy
     public int health = 100; // Health points of the flying enemy
     public int attackPower = 20; // Attack power of the flying enemy
-    public float PlayerHealth;
+    public int Playerhealth;
 
 
     // Update is called once per frame
@@ -50,13 +50,17 @@ public class Enemy2 : MonoBehaviour
     void Attack(GameObject player)
     {
         
-    //    PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
       
-   //     if (playerHealth != null)
+       if (playerHealth != null)
         {
           
-     //       playerHealth.TakeDamage(attackPower);
+        //  playerHealth.TakeDamage(attackPower);
         }
+    }
+
+    private class PlayerHealth
+    {
     }
 }
 
