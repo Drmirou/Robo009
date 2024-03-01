@@ -13,9 +13,7 @@ public class Healing : MonoBehaviour
        if (PlayerScript != null)
 
         {
-           PlayerScript.HP += AddHealth;
-            AddHealth = 0;
-            GameObject.Destroy(gameObject);
+            
         }
     }
 }
