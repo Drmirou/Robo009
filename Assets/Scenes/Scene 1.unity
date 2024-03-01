@@ -872,7 +872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SimpleBullet: {fileID: 7733989710218677299, guid: e98025087f863094e9ebb7699b98989d, type: 3}
-  CannonCooldown: 0.1
+  CannonCooldown: 0.05
   CannonCooldownOnStart: 0
   PlayerCannonDistance: 0.9
   bulletSpawner: {fileID: 1172848828}
