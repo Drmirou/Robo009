@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
@@ -24,6 +25,7 @@ public class PlayerCharacter : MonoBehaviour
 
     CannonScript cannonscript;
     Light flashLight;
+    bool FirePressed = false;
 
     private void Start()
     {
@@ -43,21 +45,25 @@ public class PlayerCharacter : MonoBehaviour
         {
             coyoteTimeCounter -= Time.deltaTime;
         }
-       
-        if(coyoteTimeCounter > 0 && Input.GetButtonDown("Jump"))
+
+        if (coyoteTimeCounter > 0 && Input.GetButtonDown("Jump"))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             coyoteTimeCounter = 0f;
         }
-     
+
         if (Input.GetButtonUp("Jump"))
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0, 5f);
 
-            
+
 
         }
         Flip();
+        if (FirePressed)
+        {
+            cannonscript.CannonFire();
+        }
     }
 
     private void Flip()
@@ -65,12 +71,14 @@ public class PlayerCharacter : MonoBehaviour
         Vector3 mouseCameraPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseCameraPos.z = 0f;
 
-        if(transform.position.x > mouseCameraPos.x) {
-           if(transform.rotation !=  Quaternion.Euler(0, -180, 0)) { transform.rotation = Quaternion.Euler(0, 180, 0); }
-           
-        }   else
+        if (transform.position.x > mouseCameraPos.x)
         {
-           if (transform.rotation != Quaternion.Euler(0, 0, 0)) { transform.rotation = Quaternion.Euler(0, 0, 0); }
+            if (transform.rotation != Quaternion.Euler(0, -180, 0)) { transform.rotation = Quaternion.Euler(0, 180, 0); }
+
+        }
+        else
+        {
+            if (transform.rotation != Quaternion.Euler(0, 0, 0)) { transform.rotation = Quaternion.Euler(0, 0, 0); }
 
         }
 
@@ -94,11 +102,19 @@ public class PlayerCharacter : MonoBehaviour
 
     }
 
-    void OnFire()
+    void OnFire(InputValue value)
     {
 
-        cannonscript.CannonFire();
-        
+        if (value.isPressed)
+        {
+            FirePressed = true;
+
+        }
+        else 
+        {
+            FirePressed = false;
+        }
+
 
     }
 
