@@ -4,7 +4,7 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Enemy2 : MonoBehaviour
 {
-    public static Transform startingPoint;
+    public UnityEngine.Transform startingPoint;
     private GameObject player;
     public float flyingSpeed;
     public bool chase = false;
@@ -41,7 +41,7 @@ public class Enemy2 : MonoBehaviour
     }
     private void ReturnStartPoint()
     {
-        transform.position = Vector2.MoveTowards(transform.position ,startingpoint.position, flyingSpeed = Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position ,startingPoint.position, flyingSpeed = Time.deltaTime);
     }
     private void Flip()
     {
