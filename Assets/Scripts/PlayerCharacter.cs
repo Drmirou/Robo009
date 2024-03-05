@@ -65,7 +65,7 @@ public class PlayerCharacter : MonoBehaviour
             cannonscript.CannonFire();
         }
     }
-
+    public GameObject PLayerBody = null;
     private void Flip()
     {
         Vector3 mouseCameraPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -73,12 +73,12 @@ public class PlayerCharacter : MonoBehaviour
 
         if (transform.position.x > mouseCameraPos.x)
         {
-            if (transform.rotation != Quaternion.Euler(0, -180, 0)) { transform.rotation = Quaternion.Euler(0, 180, 0); }
+            if (PLayerBody.transform.rotation != Quaternion.Euler(0, -180, 0)) { PLayerBody.transform.rotation = Quaternion.Euler(0, 180, 0); }
 
         }
         else
         {
-            if (transform.rotation != Quaternion.Euler(0, 0, 0)) { transform.rotation = Quaternion.Euler(0, 0, 0); }
+            if (PLayerBody.transform.rotation != Quaternion.Euler(0, 0, 0)) { PLayerBody.transform.rotation = Quaternion.Euler(0, 0, 0); }
 
         }
 
