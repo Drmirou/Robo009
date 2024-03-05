@@ -8,7 +8,17 @@ public class Enemy2 : MonoBehaviour
     private GameObject player;
     public float flyingSpeed;
     public bool chase = false;
-    
+    public float HP;
+
+    public void TakeDamage(int aHPValue)
+    {
+        HP += aHPValue;
+
+        if (HP < 0)
+        {
+            GameObject.Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -26,7 +36,7 @@ public class Enemy2 : MonoBehaviour
             ReturnStartPoint();
         Flip();
     }
-    private void Chase()
+    private void Chase()  
     {
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, flyingSpeed*Time.deltaTime);
         if (Vector2.Distance(transform .position, player.transform .position )<= 0.5f)
@@ -35,7 +45,7 @@ public class Enemy2 : MonoBehaviour
         }
         else
         {
-            //reset variable
+            //reset variable 
         }
 
     }

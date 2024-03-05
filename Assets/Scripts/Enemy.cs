@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
         myRigidBody.velocity = characterVelocity;
 
 
+
     }
 }
 // ni får byta kod om det inte funkar
