@@ -4,7 +4,32 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int HP = 0;
+    public float speed = 3f; 
+    public int damage = 10;  
+
+    private Rigidbody2D rb;
+    private bool movingRight = true;
+    public Transform groundDetection;
+    public int HP;
+    
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        
+        rb.velocity = (movingRight ? Vector2.right : Vector2.left) * speed;
+
+        
+        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, 0.1f);
+        if (!groundInfo.collider)
+        {
+            movingRight = !movingRight;
+            transform.Rotate(0f, 180f, 0f);
+        }
+    }
     public void TakeDamage(int aHPValue)
     {
         HP += aHPValue;
@@ -14,31 +39,7 @@ public class Enemy : MonoBehaviour
             GameObject.Destroy(gameObject);
         }
     }
-    // I love copium yippe!!!!
-    
-    public Rigidbody2D myRigidBody = null;
-
-    public float MovementSpeedPerSecond = 10.0f;
-    public float MovementSign = 2.0f;
 
 
-
-    void FixedUpdate()
-    {
-        
-        Vector3 characterVelocity = myRigidBody.velocity;
-        
-        characterVelocity.x = 0;
-
-       
-        characterVelocity += MovementSign * MovementSpeedPerSecond * transform.right.normalized;
-        
-
-      
-        myRigidBody.velocity = characterVelocity;
-
-
-
-    }
 }
 // ni får byta kod om det inte funkar
