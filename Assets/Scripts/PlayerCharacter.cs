@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -102,7 +103,13 @@ public class PlayerCharacter : MonoBehaviour
 
     }
 
-    void OnFire(InputValue value)
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(groundcheck.position, 0.3f);
+    }
+
+        void OnFire(InputValue value)
     {
 
         if (value.isPressed)
