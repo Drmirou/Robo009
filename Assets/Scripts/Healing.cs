@@ -16,5 +16,10 @@ public class Healing : MonoBehaviour
             
         }
     }
+
+
+
+
+
 }
 // Kan göra vad ni vill med powerup

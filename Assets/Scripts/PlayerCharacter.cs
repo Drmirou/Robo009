@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -64,7 +66,7 @@ public class PlayerCharacter : MonoBehaviour
             cannonscript.CannonFire();
         }
     }
-
+    public GameObject PLayerBody = null;
     private void Flip()
     {
         Vector3 mouseCameraPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -72,12 +74,12 @@ public class PlayerCharacter : MonoBehaviour
 
         if (transform.position.x > mouseCameraPos.x)
         {
-            if (transform.rotation != Quaternion.Euler(0, -180, 0)) { transform.rotation = Quaternion.Euler(0, 180, 0); }
+            if (PLayerBody.transform.rotation != Quaternion.Euler(0, -180, 0)) { PLayerBody.transform.rotation = Quaternion.Euler(0, 180, 0); }
 
         }
         else
         {
-            if (transform.rotation != Quaternion.Euler(0, 0, 0)) { transform.rotation = Quaternion.Euler(0, 0, 0); }
+            if (PLayerBody.transform.rotation != Quaternion.Euler(0, 0, 0)) { PLayerBody.transform.rotation = Quaternion.Euler(0, 0, 0); }
 
         }
 
@@ -101,7 +103,13 @@ public class PlayerCharacter : MonoBehaviour
 
     }
 
-    void OnFire(InputValue value)
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(groundcheck.position, 0.3f);
+    }
+
+        void OnFire(InputValue value)
     {
 
         if (value.isPressed)

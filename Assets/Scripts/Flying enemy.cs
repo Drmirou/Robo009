@@ -4,64 +4,63 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Enemy2 : MonoBehaviour
 {
+    public UnityEngine.Transform startingPoint;
+    private GameObject player;
+    public float flyingSpeed;
+    public bool chase = false;
+    public float HP;
 
-    public float flyingSpeed = 5f; // Speed of the flying enemy
-    public int health = 100; // Health points of the flying enemy
-    public int attackPower = 20; // Attack power of the flying enemy
-    public int Playerhealth;
-
-
-    // Update is called once per frame
-    void Update()
+    public void TakeDamage(int aHPValue)
     {
-        // Move the enemy horizontally
-        transform.Translate(Vector2.left * flyingSpeed * Time.deltaTime);
-    }
+        HP += aHPValue;
 
-    // Method to handle when the enemy takes damage
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        if (health <= 0)
+        if (HP < 0)
         {
-            Die();
+            GameObject.Destroy(gameObject);
         }
     }
 
-    // Method to handle the death of the enemy
-    void Die()
+    private void Start()
     {
-        
-        Destroy(gameObject);
+        player = GameObject.FindGameObjectWithTag("Player");
+
     }
 
-    // Method to handle collision with other objects
-    void OnTriggerEnter2D(Collider2D other)
+     void Update()
     {
-        // If the collided object is tagged as "Player"
-        if (other.CompareTag("Player"))
+        if (player == null)
+            return;
+        if (chase == true)
+            Chase();
+        else
+            ReturnStartPoint();
+        Flip();
+    }
+    private void Chase()  
+    {
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, flyingSpeed*Time.deltaTime);
+        if (Vector2.Distance(transform .position, player.transform .position )<= 0.5f)
         {
-            Attack(other.gameObject);
+            //change spped, shoot,animation
         }
-    }
-    
-
-    
-    void Attack(GameObject player)
-    {
-        
-        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-      
-       if (playerHealth != null)
+        else
         {
-          
-        //  playerHealth.TakeDamage(attackPower);
+            //reset variable 
         }
-    }
 
-    private class PlayerHealth
-    {
     }
+    private void ReturnStartPoint()
+    {
+        transform.position = Vector2.MoveTowards(transform.position ,startingPoint.position, flyingSpeed = Time.deltaTime);
+    }
+    private void Flip()
+    {
+        if (transform.position.x > player.transform.position.x)
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        else
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+    }
+     
 }
 
 // FREEDOM RAHHHH :BIRD: :BRID:

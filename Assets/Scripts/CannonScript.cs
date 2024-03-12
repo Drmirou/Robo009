@@ -48,7 +48,7 @@ public class CannonScript : MonoBehaviour
     public void CannonFire()
     {
        float dist = Vector2.Distance(mousePos, playerPos.position);
-        Debug.Log(dist);
+        
         if (dist > PlayerCannonDistance)
         {
             if (CannonCooldown <= 0)
