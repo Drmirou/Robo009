@@ -20,7 +20,12 @@ public class CameraShake : MonoBehaviour
         CinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
     }
 
-    public void ShakeCamera() {
+    private void Start() {
+        StopShake();         
+    }
+
+    public void ShakeCamera()
+    {
         CinemachineBasicMultiChannelPerlin _cbmcp = CinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         _cbmcp.m_AmplitudeGain = ShakeIntensity;
 
@@ -29,8 +34,11 @@ public class CameraShake : MonoBehaviour
 
     }
 
-    void StopShake() {
-        CinemachineBasicMultiChannelPerlin _cbmcp = CinemachineVirtualCamera
+    void StopShake()
+    {
+        CinemachineBasicMultiChannelPerlin _cbmcp = CinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        _cbmcp.m_AmplitudeGain = 0f;
+        timer = 0;
 
 
 
@@ -38,10 +46,30 @@ public class CameraShake : MonoBehaviour
 
 
 
+
+    }
     // Update is called once per frame
     void Update()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            ShakeCamera();
+        }
+
+        if (timer > 0)
         {
 
+            timer -= Time.deltaTime;
+
+            if (timer < 0)
+            {
+                StopShake();
+                {
+
+
+                }
+            }
         }
     }
 }
+         
