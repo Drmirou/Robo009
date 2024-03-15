@@ -61,6 +61,7 @@ public class Enemy2 : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 180, 0);
     }
      
+
 }
 
 // FREEDOM RAHHHH :BIRD: :BRID:
