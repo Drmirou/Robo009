@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class EnemyDetection : MonoBehaviour
 {
-    public LayerMask playerLayer; // Layer mask for detecting the player
-    public float detectionRadius = 5f; // Radius for detecting the player
-    public Transform detectionPoint; // Point from where detection is done
-    public float chaseSpeed = 3f; // Speed at which the enemy chases the player
+    public LayerMask playerLayer; 
+    public float detectionRadius = 5f; 
+    public Transform detectionPoint;
+    public float chaseSpeed = 3f; 
 
     private Transform player; // Reference to the player's transform
     private bool playerDetected = false; // Flag to track if the player is detected
