@@ -105,6 +105,7 @@ public class PlayerCharacter : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(groundcheck.position, 0.3f);
     }
