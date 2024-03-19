@@ -53,7 +53,7 @@ public class PlayerCharacter : MonoBehaviour
             coyoteTimeCounter = 0f;
         }
 
-        if (Input.GetButtonUp("Jump"))
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0, 5f);
         }
