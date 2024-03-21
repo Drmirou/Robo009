@@ -18,7 +18,23 @@ public class ArmSwitcher : MonoBehaviour
 
         for(int i = 0; i < totalArms; i++)
         {
+            arms[i] = armHolder.transform.GetChild(i).gameObject;
+            arms[i].SetActive(false);
+        }
+       
+        arms[0].SetActive(true);
+        currentArm = arms[0];
+        currentArmsIndex = 0;
+    }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.E)) 
+        {
+            if(currentArmsIndex <totalArms -1)
+            {
+
+            }
         }
     }
 }
