@@ -33,7 +33,22 @@ public class ArmSwitcher : MonoBehaviour
         {
             if(currentArmsIndex <totalArms -1)
             {
+                arms[currentArmsIndex].SetActive(false);
+                currentArmsIndex += 1;
+                arms[currentArmsIndex].SetActive(true);
+                currentArm = arms[currentArmsIndex];
 
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (currentArmsIndex > 0)
+            {
+                arms[currentArmsIndex].SetActive(false);
+                currentArmsIndex -= 1;
+                arms[currentArmsIndex].SetActive(true);
+                currentArm = arms[currentArmsIndex];
             }
         }
     }
