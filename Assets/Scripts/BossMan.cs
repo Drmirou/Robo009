@@ -9,8 +9,14 @@ public class Bosscode : MonoBehaviour
     public bool chase = false;
     public float HP;
     public int damage = 2;
-    public float dash = 1;
     public float speed;
+    public float dashCooldown = 10f; 
+    public int maxDashes = 3;
+    public float dashSpeed = 10f; 
+    public float dashDuration = 0.5f; 
+    private bool isDashing = false; 
+    private int remainingDashes;
+    private float dashTimer = 0f; 
 
 
     public void TakeDamage(int aHPValue)
@@ -37,4 +43,8 @@ public class Bosscode : MonoBehaviour
         }
     }
 
+
+
+
+    // You guys are such a winners on god!!!
 }
