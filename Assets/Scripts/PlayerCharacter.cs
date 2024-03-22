@@ -24,18 +24,20 @@ public class PlayerCharacter : MonoBehaviour
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
 
+    SmgScript smgscript;
     CannonScript cannonscript;
-    Light flashLight;
     bool FirePressed = false;
 
-    private void Start()
+    private void Awake()
     {
         cannonscript = FindObjectOfType<CannonScript>();
-        flashLight = FindObjectOfType<Light>();
+        smgscript = FindObjectOfType<SmgScript>();
+
     }
 
     void Update()
     {
+
         horizontal = Input.GetAxisRaw("Horizontal");
 
         if (IsGrounded())
@@ -61,6 +63,8 @@ public class PlayerCharacter : MonoBehaviour
         if (FirePressed)
         {
             cannonscript.CannonFire();
+            smgscript.GunShoot();
+            
         }
     }
     public GameObject PLayerBody = null;
