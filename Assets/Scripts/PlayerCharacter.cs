@@ -27,6 +27,7 @@ public class PlayerCharacter : MonoBehaviour
     SmgScript smgscript;
     CannonScript cannonscript;
     bool FirePressed = false;
+    bool IsMoving = false;
 
     private void Awake()
     {
@@ -66,6 +67,8 @@ public class PlayerCharacter : MonoBehaviour
             smgscript.GunShoot();
             
         }
+
+        if (rb.position.x > 0 || rb.position.x < 0) { IsMoving = true; } else { IsMoving = false; }
     }
     public GameObject PLayerBody = null;
     private void Flip()
