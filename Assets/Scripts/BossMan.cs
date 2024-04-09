@@ -16,7 +16,7 @@ public class Bosscode : MonoBehaviour
     public float dashDuration = 0.5f; 
     private bool isDashing = false; 
     private int remainingDashes;
-    private float dashTimer = 0f; 
+    private float dashTimer = 2f; 
 
 
     public void TakeDamage(int aHPValue)
@@ -42,6 +42,7 @@ public class Bosscode : MonoBehaviour
             playerHealth.TakeDamage(damage);
         }
     }
+
 
 
 
