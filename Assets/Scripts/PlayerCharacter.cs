@@ -63,8 +63,19 @@ public class PlayerCharacter : MonoBehaviour
         Flip();
         if (FirePressed)
         {
-            cannonscript.CannonFire();
-            smgscript.GunShoot();
+            cannonscript.CannonFire(); // Add nullcheck
+            smgscript.GunShoot();      // Add nullcheck
+
+            switch (HP)
+            {
+                case 0:
+                    //nu är död
+                    break;
+                case 1:
+                    //nu nästan död
+                    break;
+
+            }
             
         }
 
