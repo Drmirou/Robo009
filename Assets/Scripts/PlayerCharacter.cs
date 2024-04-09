@@ -63,20 +63,19 @@ public class PlayerCharacter : MonoBehaviour
         Flip();
         if (FirePressed)
         {
-            cannonscript.CannonFire(); // Add nullcheck
-            smgscript.GunShoot();      // Add nullcheck
+            if (smgscript != null) { smgscript.GunShoot(); }
+            if (cannonscript != null) { cannonscript.CannonFire(); }
+        }
+       
+        switch (HP)
+        {
+            case 0:
+                //nu är död
+                break;
+            case 1:
+                //nu nästan död
+                break;
 
-            switch (HP)
-            {
-                case 0:
-                    //nu är död
-                    break;
-                case 1:
-                    //nu nästan död
-                    break;
-
-            }
-            
         }
 
         if (rb.position.x > 0 || rb.position.x < 0) { IsMoving = true; } else { IsMoving = false; }
