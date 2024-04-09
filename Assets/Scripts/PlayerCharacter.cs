@@ -24,18 +24,21 @@ public class PlayerCharacter : MonoBehaviour
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
 
+    SmgScript smgscript;
     CannonScript cannonscript;
-    Light flashLight;
     bool FirePressed = false;
+    bool IsMoving = false;
 
-    private void Start()
+    private void Awake()
     {
         cannonscript = FindObjectOfType<CannonScript>();
-        flashLight = FindObjectOfType<Light>();
+        smgscript = FindObjectOfType<SmgScript>();
+
     }
 
     void Update()
     {
+
         horizontal = Input.GetAxisRaw("Horizontal");
 
         if (IsGrounded())
@@ -53,18 +56,19 @@ public class PlayerCharacter : MonoBehaviour
             coyoteTimeCounter = 0f;
         }
 
-        if (Input.GetButtonUp("Jump"))
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0, 5f);
-
-
-
         }
         Flip();
         if (FirePressed)
         {
             cannonscript.CannonFire();
+            smgscript.GunShoot();
+            
         }
+
+        if (rb.position.x > 0 || rb.position.x < 0) { IsMoving = true; } else { IsMoving = false; }
     }
     public GameObject PLayerBody = null;
     private void Flip()
@@ -87,11 +91,6 @@ public class PlayerCharacter : MonoBehaviour
 
     }
 
-    void OnFlashlight()
-    {
-        flashLight.enabled = !flashLight.enabled;
-    }
-
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
@@ -101,10 +100,12 @@ public class PlayerCharacter : MonoBehaviour
     {
         return Physics2D.OverlapCircle(groundcheck.position, 0.3f, groundLayer);
 
+
     }
 
     private void OnDrawGizmos()
     {
+
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(groundcheck.position, 0.3f);
     }
