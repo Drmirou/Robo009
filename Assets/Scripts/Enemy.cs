@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     private bool movingRight = true;
     public Transform groundDetection;
     public int HP;
-    
+    public PlayerHealth playerHealth;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -37,6 +37,14 @@ public class Enemy : MonoBehaviour
         if (HP < 0)
         {
             GameObject.Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            playerHealth.TakeDamage(damage);
         }
     }
 
