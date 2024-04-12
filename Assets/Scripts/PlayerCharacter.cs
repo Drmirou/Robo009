@@ -23,6 +23,8 @@ public class PlayerCharacter : MonoBehaviour
 
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
+    public GameObject SMGweapon;
+    public GameObject CannonWeapon;
 
     SmgScript smgscript;
     CannonScript cannonscript;
@@ -33,6 +35,8 @@ public class PlayerCharacter : MonoBehaviour
     {
         cannonscript = FindObjectOfType<CannonScript>();
         smgscript = FindObjectOfType<SmgScript>();
+
+        if (SMGweapon.activeInHierarchy) { Debug.Log("i has smg script"); } else { Debug.Log("no smg :("); }
 
     }
 
