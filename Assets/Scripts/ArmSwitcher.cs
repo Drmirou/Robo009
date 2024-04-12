@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class ArmSwitcher : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private Transform[] weapons;
+
+    [Header("Keys")]
+    [SerializeField] private KeyCode[] keys;
+
     int totalArms = 1;
     public int currentArmsIndex;
 
