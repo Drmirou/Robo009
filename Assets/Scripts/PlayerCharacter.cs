@@ -23,6 +23,8 @@ public class PlayerCharacter : MonoBehaviour
 
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
+    public GameObject SMGweapon;
+    public GameObject CannonWeapon;
 
     SmgScript smgscript;
     CannonScript cannonscript;
@@ -33,6 +35,8 @@ public class PlayerCharacter : MonoBehaviour
     {
         cannonscript = FindObjectOfType<CannonScript>();
         smgscript = FindObjectOfType<SmgScript>();
+
+        if (SMGweapon.activeInHierarchy) { Debug.Log("i has smg script"); } else { Debug.Log("no smg :("); }
 
     }
 
@@ -63,9 +67,19 @@ public class PlayerCharacter : MonoBehaviour
         Flip();
         if (FirePressed)
         {
-            cannonscript.CannonFire();
-            smgscript.GunShoot();
-            
+            if (smgscript != null) { smgscript.GunShoot(); }
+            if (cannonscript != null) { cannonscript.CannonFire(); }
+        }
+       
+        switch (HP)
+        {
+            case 0:
+                //nu är död
+                break;
+            case 1:
+                //nu nästan död
+                break;
+
         }
 
         if (rb.position.x > 0 || rb.position.x < 0) { IsMoving = true; } else { IsMoving = false; }
@@ -99,6 +113,7 @@ public class PlayerCharacter : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundcheck.position, 0.3f, groundLayer);
+
 
     }
 

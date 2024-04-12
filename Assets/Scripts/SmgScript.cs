@@ -12,14 +12,14 @@ public class SmgScript : MonoBehaviour
     public Transform bulletSpawner;
 
     Vector3 mousePos;
-    Transform playerPos;
+   public Transform playerPos;
 
     private void Start()
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         GunCooldownOnStart = GunCooldown;
         GunCooldown = 0;
-        playerPos = GameObject.Find("Player").GetComponent<Transform>();
+/*        playerPos = GameObject.Find("Player").GetComponent<Transform>()*/;
     }
     private void Update()
     {

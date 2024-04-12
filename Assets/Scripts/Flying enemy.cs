@@ -9,7 +9,8 @@ public class Enemy2 : MonoBehaviour
     public float flyingSpeed;
     public bool chase = false;
     public float HP;
-
+    public PlayerHealth playerHealth;
+    public int damage = 2;
     public void TakeDamage(int aHPValue)
     {
         HP += aHPValue;
@@ -60,7 +61,16 @@ public class Enemy2 : MonoBehaviour
         else
             transform.rotation = Quaternion.Euler(0, 180, 0);
     }
-     
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            playerHealth.TakeDamage(damage);
+        }
+    }
+
 }
 
 // FREEDOM RAHHHH :BIRD: :BRID:
