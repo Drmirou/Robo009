@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
 
 public class Boss_run : StateMachineBehaviour
 {
-
 
 	public float speed = 2.5f;
     public float attackRange = 3f;
@@ -36,6 +36,10 @@ public class Boss_run : StateMachineBehaviour
         {
             animator.SetTrigger("Attack");
         }
-        // You guys are such a winners on god!!!
+        // You guys are such a KINGS on god!!!
     } 
 }
+
+
+
+// If you dont understan what is this please watch https://www.youtube.com/watch?v=AD4JIXQDw0s
