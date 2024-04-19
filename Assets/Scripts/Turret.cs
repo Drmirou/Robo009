@@ -10,6 +10,7 @@ public class Turret : MonoBehaviour
     bool Detected = false;
 
     public GameObject AlarmLight;
+    public GameObject gun;
 
     Vector2 Direction;
 
@@ -46,7 +47,10 @@ public class Turret : MonoBehaviour
                 AlarmLight.GetComponent <SpriteRenderer>().color = Color.green;
             }
         }
+
+        if(Detected && Direction != ) { gun.transform.up = Direction; }
     }
+     
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, Range);
