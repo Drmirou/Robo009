@@ -34,7 +34,7 @@ public class Bosshealth: MonoBehaviour
         Destroy(gameObject);
     }
 
-
-
+    //change the whatever value for Hp if you want to
+   
 
 }

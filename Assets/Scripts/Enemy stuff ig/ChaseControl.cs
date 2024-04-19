@@ -19,7 +19,7 @@ public class ChaseControl : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.CompareTag("player"))
+        if(collision.CompareTag("Player"))
         {
             foreach(Enemy2 enemy in enemyArray )
             {
