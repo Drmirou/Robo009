@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bosshealth: MonoBehaviour
 {
-    public int health = 500;
+    public int health = 1000;
 
     public GameObject deathEffect;
 
