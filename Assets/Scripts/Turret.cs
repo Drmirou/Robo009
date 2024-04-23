@@ -33,7 +33,6 @@ public class Turret : MonoBehaviour
         {
             if (rayInfo.collider.gameObject.tag == "Player")
             {
-                Debug.Log("Detected on");
                 if (Detected == false)
                 { Detected = true; AlarmLight.GetComponent<SpriteRenderer>().color = Color.red;}
             }
@@ -42,13 +41,12 @@ public class Turret : MonoBehaviour
         {
             if (Detected == true)
             {
-                Debug.Log("Detected off");
                 Detected = false;
                 AlarmLight.GetComponent <SpriteRenderer>().color = Color.green;
             }
         }
 
-        if(Detected && Direction != ) { gun.transform.up = Direction; }
+        if(Detected) { gun.transform.up = Direction; }
     }
      
     private void OnDrawGizmosSelected()
