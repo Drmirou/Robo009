@@ -11,6 +11,12 @@ public class Turret : MonoBehaviour
 
     public GameObject AlarmLight;
     public GameObject gun;
+    public GameObject pivot;
+    public GameObject bullet;
+
+    public float fireSpeed = 1;
+    public float BulletCountUntilReload = 10;
+    public float reloadTime = 5;
 
     Vector2 Direction;
 
@@ -39,18 +45,17 @@ public class Turret : MonoBehaviour
         }  
         else
         {
-            if (Detected == true)
-            {
+
                 Detected = false;
                 AlarmLight.GetComponent <SpriteRenderer>().color = Color.green;
-            }
+
         }
 
-        if(Detected) { gun.transform.up = Direction; }
+        if(Detected) { pivot.transform.up = Direction; }
     }
      
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(transform.position, Range);
+        Gizmos.DrawWireSphere(pivot.transform.position, Range);
     }
 }
