@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossEnrage : MonoBehaviour
 {
- //   public Bosshealth Bosshealth;
+ 
 	
 	//override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
  //   {

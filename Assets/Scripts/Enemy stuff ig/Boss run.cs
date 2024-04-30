@@ -42,4 +42,4 @@ public class Boss_run : StateMachineBehaviour
 
 
 
-// If you dont understan what is this please watch https://www.youtube.com/watch?v=AD4JIXQDw0s
+// If you dont understand what is this please watch https://www.youtube.com/watch?v=AD4JIXQDw0s
