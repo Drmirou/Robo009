@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using UnityEngine;
 
 public class Bossmeleeorsomething : MonoBehaviour
@@ -30,6 +31,24 @@ public class Bossmeleeorsomething : MonoBehaviour
         Vector3 pos = transform.position;
         pos += transform.right * attackOffset.x;
         pos += transform.up * attackOffset.y;
+
+        Collider2D colInfo = Physics2D.OverlapCircle(pos, attackRange, attackMask);
+        if (colInfo != null)
+        {
+            colInfo.GetComponent<PlayerHealth>().TakeDamage(enragedAttackDamage);
+        }
     }
+
+    void OnDrawGizmosSelected()
+    {
+        Vector3 pos = transform.position;
+        pos += transform.right * attackOffset.x;
+        pos += transform.up * attackOffset.y;
+
+        Gizmos.DrawWireSphere(pos, attackRange);
+
+    }
+    
+
 }
 
