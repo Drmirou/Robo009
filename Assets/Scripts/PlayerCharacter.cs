@@ -18,7 +18,9 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private Vector3 mousePosition;
+
 
 
     private float coyoteTime = 0.2f;

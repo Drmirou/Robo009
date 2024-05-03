@@ -2,22 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
 public class Turret : MonoBehaviour
 {
-    public float Range;
+    public float RaycastRange;
     public Transform Target;
-    bool Detected = false;
+    public bool Detected = false;
 
     public GameObject AlarmLight;
     public GameObject gun;
+    public GameObject pivot;
+    public GameObject bullet;
+    public Transform FirePoint;
+
+    [Range(0.1f, 5)]
+    public float fireDelay = 1;
+
+    public int AmmoCapacity = 10;
+    public int BulletCountUntilReload = 10;
+    [Range(0.1f, 2)]
+    public float reloadTime = 5;
+
+    private float timeSinceFired = 0;
+    public float bulletSpeed = 1;
+    public float timeReloaded;
 
     Vector2 Direction;
 
 
     void Start()
     {
-        
+        BulletCountUntilReload = AmmoCapacity;
     }
 
     
@@ -27,7 +43,9 @@ public class Turret : MonoBehaviour
 
         Direction= targetPos - (Vector2)transform.position;
 
-        RaycastHit2D rayInfo = Physics2D.Raycast(transform.position,Direction,Range);
+        RaycastHit2D rayInfo = Physics2D.Raycast(transform.position,Direction,RaycastRange);
+
+        if(timeSinceFired < 6) { timeSinceFired += Time.deltaTime; }
 
         if (rayInfo)
         {
@@ -39,18 +57,52 @@ public class Turret : MonoBehaviour
         }  
         else
         {
-            if (Detected == true)
-            {
+
                 Detected = false;
                 AlarmLight.GetComponent <SpriteRenderer>().color = Color.green;
-            }
+
         }
 
-        if(Detected) { gun.transform.up = Direction; }
+        if(Detected) 
+        { 
+          pivot.transform.up = Direction;
+          if (timeSinceFired > fireDelay) 
+            {
+                timeSinceFired = 0; shoot(); 
+            }
+        }
+        
     }
+
+    private void shoot()
+    {
+        if (BulletCountUntilReload > 0) 
+        {
+            GameObject BulletsIns = Instantiate(bullet, FirePoint.position, Quaternion.identity);
+            BulletsIns.GetComponent<Rigidbody2D>().AddForce(Direction * bulletSpeed);
+            BulletCountUntilReload -= 1;
+        }
+        else
+        reload();
+       
+    }
+    
+    private void reload()
+    {
+        if (timeReloaded > reloadTime)
+        {
+            BulletCountUntilReload = AmmoCapacity;
+            timeReloaded = 0;
+        }
+        else
+        {
+            timeReloaded += Time.deltaTime;
+        }
+    }
+
      
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(transform.position, Range);
+        Gizmos.DrawWireSphere(pivot.transform.position, RaycastRange);
     }
 }
