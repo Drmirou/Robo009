@@ -8,7 +8,7 @@ public class Turret : MonoBehaviour
 {
     public float RaycastRange;
     public Transform Target;
-    bool Detected = false;
+    public bool Detected = false;
 
     public GameObject AlarmLight;
     public GameObject gun;
@@ -21,10 +21,12 @@ public class Turret : MonoBehaviour
 
     public int AmmoCapacity = 10;
     public int BulletCountUntilReload = 10;
+    [Range(0.1f, 2)]
     public float reloadTime = 5;
+
     private float timeSinceFired = 0;
     public float bulletSpeed = 1;
-    private float timeReloaded;
+    public float timeReloaded;
 
     Vector2 Direction;
 
@@ -90,6 +92,7 @@ public class Turret : MonoBehaviour
         if (timeReloaded > reloadTime)
         {
             BulletCountUntilReload = AmmoCapacity;
+            timeReloaded = 0;
         }
         else
         {
