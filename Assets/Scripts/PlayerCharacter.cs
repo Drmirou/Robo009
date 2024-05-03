@@ -37,7 +37,7 @@ public class PlayerCharacter : MonoBehaviour
     {
         cannonscript = FindObjectOfType<CannonScript>();
         smgscript = FindObjectOfType<SmgScript>();
-        anim=GetComponent<Animator>();
+        anim=GetComponentInChildren<Animator>();
 
         if (SMGweapon.activeInHierarchy) { Debug.Log("i has smg script"); } else { Debug.Log("no smg :("); }
 

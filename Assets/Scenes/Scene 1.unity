@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 153592894}
   - component: {fileID: 153592896}
   - component: {fileID: 153592897}
+  - component: {fileID: 153592898}
   m_Layer: 8
   m_Name: TurretDrone
   m_TagString: Untagged
@@ -401,13 +402,12 @@ Transform:
   m_GameObject: {fileID: 153592891}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.58, y: 4.48, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -65.05, z: 0}
+  m_LocalScale: {x: 1, y: 50, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1190494212}
-  - {fileID: 1666260619}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1666260619}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &153592896
 BoxCollider2D:
@@ -481,6 +481,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1773428102 &153592898
+ParentConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153592891}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Weight: 1
+  m_TranslationAtRest: {x: 0, y: -65.05, z: 0}
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_TranslationOffsets:
+  - {x: 0, y: -1.3010001, z: 0}
+  m_RotationOffsets:
+  - {x: 0, y: 0, z: 0}
+  m_AffectTranslationX: 1
+  m_AffectTranslationY: 1
+  m_AffectTranslationZ: 1
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_Active: 1
+  m_IsLocked: 0
+  m_Sources:
+  - sourceTransform: {fileID: 1666260619}
+    weight: 1
 --- !u!1 &164046763
 GameObject:
   m_ObjectHideFlags: 0
@@ -2143,7 +2170,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1190494212}
   - component: {fileID: 1190494215}
-  - component: {fileID: 1190494216}
   m_Layer: 8
   m_Name: FlyingEnemyTurretBase
   m_TagString: Untagged
@@ -2221,33 +2247,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1773428102 &1190494216
-ParentConstraint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190494211}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Weight: 1
-  m_TranslationAtRest: {x: 0, y: -0.61386156, z: 0}
-  m_RotationAtRest: {x: 0, y: 0, z: 180}
-  m_TranslationOffsets:
-  - {x: 0, y: -1.9148617, z: 0}
-  m_RotationOffsets:
-  - {x: 0, y: 0, z: 180}
-  m_AffectTranslationX: 1
-  m_AffectTranslationY: 1
-  m_AffectTranslationZ: 1
-  m_AffectRotationX: 1
-  m_AffectRotationY: 1
-  m_AffectRotationZ: 1
-  m_Active: 1
-  m_IsLocked: 0
-  m_Sources:
-  - sourceTransform: {fileID: 1666260619}
-    weight: 1
 --- !u!1 &1245547544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2463,7 +2462,7 @@ GameObject:
   - component: {fileID: 1666260620}
   - component: {fileID: 1666260621}
   m_Layer: 8
-  m_Name: Propeller
+  m_Name: TurretDronePropeller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2477,13 +2476,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1666260618}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.301, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.58, y: 5.781, z: 0}
   m_LocalScale: {x: 1, y: 0.02, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 65202257}
-  m_Father: {fileID: 153592895}
+  - {fileID: 153592895}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1666260620
 SpriteRenderer:
@@ -3838,4 +3838,4 @@ SceneRoots:
   - {fileID: 1246668264}
   - {fileID: 1749221169}
   - {fileID: 859234005}
-  - {fileID: 153592895}
+  - {fileID: 1666260619}
