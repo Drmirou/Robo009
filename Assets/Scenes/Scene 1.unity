@@ -406,7 +406,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1190494212}
-  - {fileID: 1992468387}
   - {fileID: 1666260619}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2144,6 +2143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1190494212}
   - component: {fileID: 1190494215}
+  - component: {fileID: 1190494216}
   m_Layer: 8
   m_Name: FlyingEnemyTurretBase
   m_TagString: Untagged
@@ -2166,6 +2166,7 @@ Transform:
   m_Children:
   - {fileID: 7212674}
   - {fileID: 944006293}
+  - {fileID: 1992468387}
   m_Father: {fileID: 153592895}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!212 &1190494215
@@ -2220,6 +2221,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1773428102 &1190494216
+ParentConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190494211}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Weight: 1
+  m_TranslationAtRest: {x: 0, y: -0.61386156, z: 0}
+  m_RotationAtRest: {x: 0, y: 0, z: 180}
+  m_TranslationOffsets:
+  - {x: 0, y: -1.9148617, z: 0}
+  m_RotationOffsets:
+  - {x: 0, y: 0, z: 180}
+  m_AffectTranslationX: 1
+  m_AffectTranslationY: 1
+  m_AffectTranslationZ: 1
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_Active: 1
+  m_IsLocked: 0
+  m_Sources:
+  - sourceTransform: {fileID: 1666260619}
+    weight: 1
 --- !u!1 &1245547544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2417,7 +2445,7 @@ Transform:
   m_GameObject: {fileID: 1371127504}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.7677467, y: 3.7811666, z: 0.031408615}
+  m_LocalPosition: {x: 2.773, y: 3.746, z: 0.031408615}
   m_LocalScale: {x: 77.014206, y: 46.44686, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3200,12 +3228,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1992468383}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.05, y: 1.05, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -1, w: 0}
+  m_LocalPosition: {x: 0, y: -1.5136031, z: 0}
+  m_LocalScale: {x: 1.7696791, y: 2.5889928, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 153592895}
+  m_Father: {fileID: 1190494212}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2029630191
 GameObject:

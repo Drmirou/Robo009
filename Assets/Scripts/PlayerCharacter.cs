@@ -21,7 +21,7 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private Vector3 mousePosition;
 
-
+    private Animator anim;
 
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
@@ -31,12 +31,13 @@ public class PlayerCharacter : MonoBehaviour
     SmgScript smgscript;
     CannonScript cannonscript;
     bool FirePressed = false;
-    bool IsMoving = false;
+    bool IsRunning = false;
 
     private void Awake()
     {
         cannonscript = FindObjectOfType<CannonScript>();
         smgscript = FindObjectOfType<SmgScript>();
+        anim=GetComponent<Animator>();
 
         if (SMGweapon.activeInHierarchy) { Debug.Log("i has smg script"); } else { Debug.Log("no smg :("); }
 
@@ -44,6 +45,8 @@ public class PlayerCharacter : MonoBehaviour
 
     void Update()
     {
+
+        anim.SetBool("isRunning",IsRunning);
 
         horizontal = Input.GetAxisRaw("Horizontal");
 
@@ -84,7 +87,7 @@ public class PlayerCharacter : MonoBehaviour
 
         }
 
-        if (rb.position.x > 0 || rb.position.x < 0) { IsMoving = true; } else { IsMoving = false; }
+        if (rb.position.x > 0 || rb.position.x < 0) { IsRunning = true; } else { IsRunning = false; }
     }
     public GameObject PLayerBody = null;
     private void Flip()
