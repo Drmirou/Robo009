@@ -27,7 +27,7 @@ public class PlayerCharacter : MonoBehaviour
     private float coyoteTimeCounter;
     public GameObject SMGweapon;
     public GameObject CannonWeapon;
-
+   
     SmgScript smgscript;
     CannonScript cannonscript;
     bool FirePressed = false;
@@ -46,7 +46,7 @@ public class PlayerCharacter : MonoBehaviour
     void Update()
     {
 
-        anim.SetBool("isRunning",IsRunning);
+        anim.SetBool("IsRunning",IsRunning);
 
         horizontal = Input.GetAxisRaw("Horizontal");
 
@@ -87,7 +87,7 @@ public class PlayerCharacter : MonoBehaviour
 
         }
 
-        if (rb.position.x > 0 || rb.position.x < 0) { IsRunning = true; } else { IsRunning = false; }
+        if (rb.velocity.x > 0 || rb.velocity.x < 0) { IsRunning = true; } else { IsRunning = false; } 
     }
     public GameObject PLayerBody = null;
     private void Flip()
