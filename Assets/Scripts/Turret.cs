@@ -54,14 +54,15 @@ public class Turret : MonoBehaviour
                 if (Detected == false)
                 { Detected = true; AlarmLight.GetComponent<SpriteRenderer>().color = Color.red;}
             }
-        }  
-        else
-        {
+            else
+            {
 
                 Detected = false;
-                AlarmLight.GetComponent <SpriteRenderer>().color = Color.green;
+                AlarmLight.GetComponent<SpriteRenderer>().color = Color.green;
 
-        }
+            }
+        }  
+       
 
         if(Detected) 
         { 
