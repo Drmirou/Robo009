@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ArmSwitcher : MonoBehaviour
 {
+    [Header("Keys")]
+    [SerializeField] private KeyCode[] keys;
+
     int totalArms = 1;
     public int currentArmsIndex;
 
@@ -51,5 +55,6 @@ public class ArmSwitcher : MonoBehaviour
                 currentArm = arms[currentArmsIndex];
             }
         }
+        
     }
 }

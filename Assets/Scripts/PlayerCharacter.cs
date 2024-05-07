@@ -18,26 +18,35 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private Vector3 mousePosition;
 
+    private Animator anim;
 
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
-
+    public GameObject SMGweapon;
+    public GameObject CannonWeapon;
+   
     SmgScript smgscript;
     CannonScript cannonscript;
     bool FirePressed = false;
-    bool IsMoving = false;
+    bool IsRunning = false;
 
     private void Awake()
     {
         cannonscript = FindObjectOfType<CannonScript>();
         smgscript = FindObjectOfType<SmgScript>();
+        anim=GetComponentInChildren<Animator>();
+
+        if (SMGweapon.activeInHierarchy) { Debug.Log("i has smg script"); } else { Debug.Log("no smg :("); }
 
     }
 
     void Update()
     {
+
+        anim.SetBool("IsRunning",IsRunning);
 
         horizontal = Input.GetAxisRaw("Horizontal");
 
@@ -63,12 +72,22 @@ public class PlayerCharacter : MonoBehaviour
         Flip();
         if (FirePressed)
         {
-            cannonscript.CannonFire();
-            smgscript.GunShoot();
-            
+            if (smgscript != null) { smgscript.GunShoot(); }
+            if (cannonscript != null) { cannonscript.CannonFire(); }
+        }
+       
+        switch (HP)
+        {
+            case 0:
+                //nu är död
+                break;
+            case 1:
+                //nu nästan död
+                break;
+
         }
 
-        if (rb.position.x > 0 || rb.position.x < 0) { IsMoving = true; } else { IsMoving = false; }
+        if (rb.velocity.x > 0 || rb.velocity.x < 0) { IsRunning = true; } else { IsRunning = false; } 
     }
     public GameObject PLayerBody = null;
     private void Flip()
