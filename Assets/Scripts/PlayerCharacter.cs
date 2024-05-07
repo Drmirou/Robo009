@@ -49,7 +49,7 @@ public class PlayerCharacter : MonoBehaviour
     void Update()
     {
         if (rb.velocity.x > 0 || rb.velocity.x < 0) { IsRunning = true; } else { IsRunning = false; }
-        if (Input.GetKey(KeyCode.LeftShift)) { IsSprinting = true; Debug.Log("Sprinting");  } else { IsSprinting = false; Debug.Log("NotSprinting"); }
+        if (Input.GetKey(KeyCode.LeftShift)) { IsSprinting = true; } else { IsSprinting = false; }
 
 
         anim.SetBool("IsSprinting", IsSprinting);
