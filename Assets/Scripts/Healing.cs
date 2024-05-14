@@ -14,7 +14,7 @@ public class Healing : MonoBehaviour
 
         {
             
-        }
+        } 
     }
 
 

@@ -6,6 +6,7 @@ using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class PlayerCharacter : MonoBehaviour
@@ -20,6 +21,7 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private Vector3 mousePosition;
+    [SerializeField] private float sprintingMultiplier;
 
     private Animator anim;
 
@@ -27,11 +29,12 @@ public class PlayerCharacter : MonoBehaviour
     private float coyoteTimeCounter;
     public GameObject SMGweapon;
     public GameObject CannonWeapon;
-
+   
     SmgScript smgscript;
     CannonScript cannonscript;
     bool FirePressed = false;
     bool IsRunning = false;
+    bool IsSprinting = false;
 
     private void Awake()
     {
@@ -45,8 +48,12 @@ public class PlayerCharacter : MonoBehaviour
 
     void Update()
     {
+        if (rb.velocity.x > 0 || rb.velocity.x < 0) { IsRunning = true; } else { IsRunning = false; }
+        if (Input.GetKey(KeyCode.LeftShift)) { IsSprinting = true; } else { IsSprinting = false; }
 
-        anim.SetBool("isRunning",IsRunning);
+
+        anim.SetBool("IsSprinting", IsSprinting);
+        anim.SetBool("IsRunning", IsRunning);
 
         horizontal = Input.GetAxisRaw("Horizontal");
 
@@ -86,8 +93,6 @@ public class PlayerCharacter : MonoBehaviour
                 break;
 
         }
-
-        if (rb.position.x > 0 || rb.position.x < 0) { IsRunning = true; } else { IsRunning = false; }
     }
     public GameObject PLayerBody = null;
     private void Flip()
@@ -98,12 +103,10 @@ public class PlayerCharacter : MonoBehaviour
         if (transform.position.x > mouseCameraPos.x)
         {
             if (PLayerBody.transform.rotation != Quaternion.Euler(0, -180, 0)) { PLayerBody.transform.rotation = Quaternion.Euler(0, 180, 0); }
-
         }
         else
         {
             if (PLayerBody.transform.rotation != Quaternion.Euler(0, 0, 0)) { PLayerBody.transform.rotation = Quaternion.Euler(0, 0, 0); }
-
         }
 
 
@@ -112,6 +115,9 @@ public class PlayerCharacter : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (IsSprinting) {
+        rb.velocity = new Vector2(horizontal * speed * sprintingMultiplier, rb.velocity.y); }
+        else 
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
 
