@@ -1719,7 +1719,7 @@ MonoBehaviour:
   detectionPoint: {fileID: 859234005}
   chaseSpeed: 4
   playerPos: {fileID: 1986190723}
-  jumpForce: 10
+  jumpForce: 20
   jumpCooldown: 5
   timeSincejumped: 0
   affectedEntities:
