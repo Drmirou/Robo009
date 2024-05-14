@@ -1559,8 +1559,6 @@ GameObject:
   m_Component:
   - component: {fileID: 859234005}
   - component: {fileID: 859234004}
-  - component: {fileID: 859234003}
-  - component: {fileID: 859234002}
   - component: {fileID: 859234008}
   - component: {fileID: 859234007}
   - component: {fileID: 859234006}
@@ -1571,37 +1569,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &859234002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 859234001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7de958becbf1e7146aca8f8c29043914, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  detectionRadius: 10
-  detectionPoint: {fileID: 859234005}
-  chaseSpeed: 5
---- !u!114 &859234003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 859234001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8054f3e787bb534d93a6ab7425b3529, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyArray: []
 --- !u!212 &859234004
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1743,11 +1710,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8311781c75be1940becf8f33ec61ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 5
-  force: 200
+  explosionRange: 5
+  explosionForce: 10
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  detectionRadius: 14
+  detectionPoint: {fileID: 859234005}
+  chaseSpeed: 4
+  playerPos: {fileID: 1986190723}
+  jumpForce: 10
+  jumpCooldown: 5
+  timeSincejumped: 0
   affectedEntities:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 264
 --- !u!1 &944006292
 GameObject:
   m_ObjectHideFlags: 0
