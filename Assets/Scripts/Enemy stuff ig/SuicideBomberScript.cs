@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class SuicideBomberScript : MonoBehaviour
 {
-    public float explosionRange;
+    public float explosionKnockbackRange;
     public float explosionForce;
     public LayerMask playerLayer;
     public float detectionRadius = 5f;
@@ -94,7 +94,7 @@ public class SuicideBomberScript : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.gray;
-        Gizmos.DrawWireSphere(transform.position, explosionRange);
+        Gizmos.DrawWireSphere(transform.position, explosionKnockbackRange);
      
         if (detectionPoint == null)
             return;
@@ -114,7 +114,7 @@ public class SuicideBomberScript : MonoBehaviour
     
     private void OnDestroy()
     {
-        Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, explosionRange, affectedEntities);
+        Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, explosionKnockbackRange, affectedEntities);
 
         foreach (Collider2D entity in objects)
 
