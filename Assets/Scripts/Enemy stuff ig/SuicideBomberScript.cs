@@ -18,6 +18,7 @@ public class SuicideBomberScript : MonoBehaviour
     public float jumpForce;
     public int jumpCooldown;
     public float timeSincejumped;
+    public GameObject explosionEffect;
 
     Vector2 playerHeadPos;
 
@@ -42,7 +43,7 @@ public class SuicideBomberScript : MonoBehaviour
         {
             ChasePlayer();
            
-            if(timeSincejumped >= jumpCooldown)        // change to 50 percent chance to jump
+            if(timeSincejumped >= jumpCooldown)        // change to 50 percent chance to jump, and wont jump if close enough
             {
                 Jump();
                 timeSincejumped = 0;
@@ -82,7 +83,8 @@ public class SuicideBomberScript : MonoBehaviour
     void Jump()
     {
        Vector2 playerHeadPos = playerPos.transform.position - transform.position;
-        
+       playerHeadPos += new Vector2(0, 3);
+
 
         rb.AddForce(playerHeadPos.normalized * jumpForce, ForceMode2D.Impulse);
         
@@ -114,12 +116,13 @@ public class SuicideBomberScript : MonoBehaviour
     {
         Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, explosionRange, affectedEntities);
 
-        foreach (Collider2D obj in objects)
+        foreach (Collider2D entity in objects)
 
         {
-            Vector2 direction = obj.transform.position - transform.position;
+            Vector2 direction = entity.transform.position - transform.position;
 
-            obj.GetComponent<Rigidbody2D>().AddForce(direction * explosionForce); // Add explosion effect and whatever else on death, like damage to player
+            entity.GetComponent<Rigidbody2D>().AddForce(direction * explosionForce);
+
         }
     }
 }
