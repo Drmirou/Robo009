@@ -14,6 +14,10 @@ public class robotSound_script : MonoBehaviour
     }
     public void FootSound()
     {
-        footSoundSource.PlayOneShot(footSound);
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            footSoundSource.PlayOneShot(footSound);
+        }
     }
+
 }
