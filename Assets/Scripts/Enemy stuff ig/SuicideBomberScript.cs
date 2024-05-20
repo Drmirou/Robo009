@@ -123,6 +123,11 @@ public class SuicideBomberScript : MonoBehaviour
 
             entity.GetComponent<Rigidbody2D>().AddForce(direction * explosionForce);
 
+
         }
+
+        GameObject gasExplode = Instantiate(explosionEffect, transform.position, transform.rotation);
+
+        Destroy(gasExplode, 2.5f);
     }
 }
