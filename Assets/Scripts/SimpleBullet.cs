@@ -23,8 +23,8 @@ public class SimpleBullet : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            // DO stuff if hits enemy
-
+            EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
+            enemyHealth.TakeDamage(4);
         }
 
         Destroy(gameObject);
