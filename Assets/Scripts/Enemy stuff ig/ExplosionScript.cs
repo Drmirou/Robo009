@@ -29,7 +29,7 @@ public class ExplosionScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
 
-            Debug.Log("Collider has triggered with the player!");
+            
 
         }
     }
