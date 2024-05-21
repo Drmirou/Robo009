@@ -5,7 +5,14 @@ using UnityEngine;
 public class ExplosionScript : MonoBehaviour
 {
     private Collider2D myCollider;
+    PlayerCharacter character;
 
+    public float damage;
+
+    private void Awake()
+    {
+        GetComponent<Collider2D>().enabled = false;
+    }
     void Start()
     {
         myCollider = GetComponent<Collider2D>();
@@ -28,8 +35,8 @@ public class ExplosionScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
-            
+            character=other.gameObject.GetComponent<PlayerCharacter>();
+            character.HP -= damage;
 
         }
     }
