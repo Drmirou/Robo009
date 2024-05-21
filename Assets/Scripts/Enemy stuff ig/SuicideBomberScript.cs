@@ -27,7 +27,8 @@ public class SuicideBomberScript : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform; 
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerPos = player;
         rb = GetComponent<Rigidbody2D>();   
     }
 
