@@ -5,6 +5,9 @@ using UnityEngine;
 public class ExplosionScript : MonoBehaviour
 {
     private Collider2D myCollider;
+    PlayerCharacter character;
+
+    public float damage;
 
     void Start()
     {
@@ -28,8 +31,8 @@ public class ExplosionScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
-            
+            character=other.gameObject.GetComponent<PlayerCharacter>();
+            character.HP -= damage;
 
         }
     }
