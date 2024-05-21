@@ -9,6 +9,10 @@ public class ExplosionScript : MonoBehaviour
 
     public float damage;
 
+    private void Awake()
+    {
+        GetComponent<Collider2D>().enabled = false;
+    }
     void Start()
     {
         myCollider = GetComponent<Collider2D>();
