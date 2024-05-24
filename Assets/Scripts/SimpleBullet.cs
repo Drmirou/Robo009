@@ -26,7 +26,7 @@ public class SimpleBullet : MonoBehaviour
             EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
             enemyHealth.TakeDamage(4);
         }
-
+        
         Destroy(gameObject);
     }
 }
